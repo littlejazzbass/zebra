@@ -1,0 +1,91 @@
+@startuml
+
+/'
+  図の中で目立たせたいエンティティに着色するための
+  色の名前（定数）を定義します。
+'/
+!define MAIN_ENTITY #E2EFDA-C6E0B4
+!define MAIN_ENTITY_2 #FCE4D6-F8CBAD
+
+/' 他の色も、用途が分りやすいように名前をつけます。 '/
+!define METAL #F2F2F2-D9D9D9
+!define MASTER_MARK_COLOR AAFFAA
+!define TRANSACTION_MARK_COLOR FFAA00
+
+/'
+  デフォルトのスタイルを設定します。
+  この場合の指定は class です。entity ではエラーになります。
+'/
+skinparam class {
+    BackgroundColor METAL
+    BorderColor Black
+    ArrowColor Black
+}
+
+package "開発対象システム" as target_system {
+    /'
+      マスターテーブルを M、トランザクションを T などと安直にしていますが、
+      チーム内でルールを決めればなんでも良いと思います。交差テーブルは "I" とか。
+      角丸四角形が描けない代替です。
+      １文字なら "主" とか "従" とか日本語でも OK だったのが受ける。
+     '/
+    entity "会社テーブル" as organization <<M,TRANSACTION_MARK_COLOR>> MAIN_ENTITY {
+        + ID [PK]
+        --
+        名前
+        作成日
+        更新日
+    }
+
+    entity "グループテーブル" as group <<T,TRANSACTION_MARK_COLOR>> MAIN_ENTITY_2 {
+        + ID   [PK]
+        --
+        # 会社テーブル [FK]
+        名前
+        作成日
+        更新日
+    }
+
+    entity "社員" as user <<M,MASTER_MARK_COLOR>> {
+        + ID [PK]
+        --
+        # グループテーブル [FK]
+        名前
+        メールアドレス
+        パスワード
+        管理者フラグ
+        作成日
+        更新日
+    }
+
+    entity "スキルテーブル" as skill <<M,MASTER_MARK_COLOR>> {
+        + ID [PK]
+        --
+        # グループID[FK]
+        名前
+        作成日
+        更新日
+    }
+
+    entity "サブスキル" as subskill <<M,MASTER_MARK_COLOR>> {
+        + ID [PK]
+        --
+        # スキルテーブル[FK]
+        名前
+        評価
+        作成日
+        更新日
+    }
+
+    organization ||-ri-|{   group
+    group ||-do-|{  user
+    group ||-ri-|{ skill
+    skill ||-ri-|{ subskill
+}
+
+
+
+/'note bottom of customer : コメントは\nこんなふうに書きます'/
+
+
+@enduml
