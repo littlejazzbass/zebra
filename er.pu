@@ -29,7 +29,7 @@ package "開発対象システム" as target_system {
       角丸四角形が描けない代替です。
       １文字なら "主" とか "従" とか日本語でも OK だったのが受ける。
      '/
-    entity "会社テーブル" as organization <<M,TRANSACTION_MARK_COLOR>> MAIN_ENTITY {
+    entity "会社テーブル" as company <<M,TRANSACTION_MARK_COLOR>> MAIN_ENTITY {
         + ID [PK]
         --
         名前
