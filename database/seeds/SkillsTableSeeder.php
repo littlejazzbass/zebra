@@ -18,6 +18,7 @@ class SkillsTableSeeder extends Seeder
         foreach ($titles as $title) {
             DB::table('skills')->insert([
                 'title' => $title,
+                'group_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
