@@ -20,12 +20,15 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="col-md-5">
+                <div class="charts col-sm-12 col-md-12">
+                    <div class="col-sm-12 col-md-7">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                    <div class="col-sm-12 col-md-5">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
-                <div class="col col-md-4">
+                <div class="col-sm-12 col-md-4">
                     <nav class="panel panel-default">
                         <div class="panel-heading">スキル</div>
                         <div class="panel-body">
@@ -40,7 +43,7 @@
 
                     </nav>
                 </div>
-                <div class="column col-md-8">
+                <div class="col-sm-12 col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">詳細</div>
                         <div class="panel-body">
@@ -114,7 +117,6 @@
                 }]
             },
             options: {
-                animation: false,
                 showTooltips: false,
                 legend: {
                     position: 'bottom'
@@ -129,7 +131,7 @@
                     display: true,
                     pointLabels: {
                         fontSize: 15,
-                        fontColor: colorSet.grey
+                        fontColor: 'rgb(67,74, 84)'
                     },
                     ticks: {
                         display: true,
@@ -145,6 +147,31 @@
                         color: colorSet.grey
                     }
                 }
+            }
+        };
+        var config2 = {
+            type: 'line',
+            data: {
+                labels: ["Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7"],
+                datasets: [
+                    {
+                    label: "Chart-1",
+                    borderColor: colorSet.green,
+                    data: [20, 26, 12, 43, 33, 21, 29],
+                    },
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom'//ラベルの位置
+                },
+                title: {
+                    display: true,
+                    fontSize: 20,
+                    fontColor: '#666',
+                    text: '成長度'
+                },
             }
         };
 

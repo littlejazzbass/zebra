@@ -9,6 +9,13 @@ body {
   margin: 2rem 0 2.5rem 0;
 }
 
+.charts{
+    display: flex!important;
+    align-items: center!important;
+}
+.active{
+    background-color: #4bc1c1!important;
+}
 .my-navbar {
   align-items: center;
   background: #333;
@@ -43,4 +50,10 @@ a.my-navbar-item:hover {
 .form-control[disabled],
 .form-control[readonly] {
   background-color: #fff;
+}
+
+@media screen and (max-width){
+    .charts{
+        display: block;
+    }
 }
