@@ -18,3 +18,7 @@ Route::get('/',function(){
 Route::middleware(['auth','general'])->group(function(){
     Route::get('/mypage/skill/','HomeController@index')->name('home');
 });
+
+Route::middleware(['auth','admin'])->group(function(){
+    Route::get('admin/index', 'AdminController@index')->name('admin');
+});
