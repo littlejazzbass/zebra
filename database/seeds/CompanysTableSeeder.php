@@ -14,6 +14,7 @@ class CompanysTableSeeder extends Seeder
     public function run()
     {
         $names = [
+            'defaultcampany',
             'carecon',
             'uptech',
             'cyber',

@@ -13,12 +13,13 @@ class SkillsTableSeeder extends Seeder
      */
     public function run()
     {
+        $group = DB::table('groups')->first();
         $titles = ['要件定義','設計','実装','テスト'];
 
         foreach ($titles as $title) {
             DB::table('skills')->insert([
                 'title' => $title,
-                'group_id' => 1,
+                'group_id' => $group->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

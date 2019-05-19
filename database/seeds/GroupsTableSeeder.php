@@ -13,7 +13,10 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
+        $company = DB::table('companys')->first();
+
         $names =[
+            'unit0',
             'unit1',
             'unit2',
             'unit3',
@@ -21,7 +24,7 @@ class GroupsTableSeeder extends Seeder
 
         foreach ($names as $name) {
             DB::table('groups')->insert([
-                'company_id' => 1,
+                'company_id' => $company->id,
                 'name' => $name,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

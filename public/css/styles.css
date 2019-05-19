@@ -10,8 +10,8 @@ body {
 }
 
 .charts{
-    display: flex!important;
-    align-items: center!important;
+    display: flex;
+    align-items: center;
 }
 .active{
     background-color: #4bc1c1!important;
@@ -52,8 +52,8 @@ a.my-navbar-item:hover {
   background-color: #fff;
 }
 
-@media screen and (max-width){
+@media screen and (max-width:991px){
     .charts{
-        display: block;
+        flex-flow: column!important;
     }
 }
