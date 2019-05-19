@@ -15,6 +15,6 @@ Auth::routes();
 Route::get('/',function(){
     return view('welcome');
 });
-Route::group(['middleware' => 'auth'], function() {
+Route::middleware(['auth','general'])->group(function(){
     Route::get('/mypage/skill/','HomeController@index')->name('home');
 });
