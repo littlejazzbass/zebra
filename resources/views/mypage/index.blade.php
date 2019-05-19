@@ -16,12 +16,15 @@
             <a class="my-navbar-brand" href="/">ZEBRA</a>
         </nav>
     </header>
-    <div class="col-md-12">
-        <canvas id="myChart"></canvas>
-    </div>
+
     <main>
         <div class="container">
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-md-5">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
                 <div class="col col-md-4">
                     <nav class="panel panel-default">
                         <div class="panel-heading">スキル</div>
@@ -71,7 +74,7 @@
             </div>
         </div>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script>
         // 色の設定
         var colorSet = {
@@ -82,11 +85,6 @@
             blue: 'rgb(54, 162, 235)',
             purple: 'rgb(153, 102, 255)',
             grey: 'rgb(201, 203, 207)'
-        };
-
-        // 乱数生成(0～100)
-        var rnd100 = function() {
-            return Math.round(Math.random() * 100);
         };
 
         // 色のRGB変換
@@ -104,11 +102,15 @@
                     @endforeach
                 ],
                 datasets: [{
-                    label: "運動量",
-                    backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
-                    borderColor: colorSet.red,
-                    pointBackgroundColor: colorSet.red,
-                    data: [40, 50, 60, 70, 80]
+                    label: '{{ $current_skill->title }}',
+                    backgroundColor: color(colorSet.green).alpha(0.5).rgbString(),
+                    borderColor: colorSet.green,
+                    pointBackgroundColor: colorSet.green,
+                    data: [
+                        @foreach($subskills as $subskill)
+                            {{$subskill->evaluation}},
+                        @endforeach
+                    ]
                 }]
             },
             options: {
@@ -121,25 +123,26 @@
                     display: true,
                     fontSize: 20,
                     fontColor: '#666',
-                    text: '一週間チャート'
+                    text: '{{ $current_skill->title }}'
                 },
                 scale: {
                     display: true,
                     pointLabels: {
                         fontSize: 15,
-                        fontColor: colorSet.yellow
+                        fontColor: colorSet.grey
                     },
                     ticks: {
                         display: true,
                         fontSize: 12,
                         fontColor: colorSet.green,
                         min: 0,
-                        max: 100,
+                        max: 5,
+                    stepSize: 1,
                         beginAtZero: true
                     },
                     gridLines: {
                         display: true,
-                        color: colorSet.yellow
+                        color: colorSet.grey
                     }
                 }
             }
@@ -148,12 +151,11 @@
         /*
          * チャートの作成
          */
-        var myRadar = new Chart($("#myChart"), config);
-
+        var myRadar = new Chart(document.getElementById('myChart'), config);
+        var myRadar2 = new Chart(document.getElementById('myChart2'),config2)
         var colorNames = Object.keys(colorSet);
-
-
     </script>
+
 </body>
 
 </html>

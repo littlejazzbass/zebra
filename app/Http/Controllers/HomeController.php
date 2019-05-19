@@ -22,6 +22,7 @@ class HomeController extends Controller
         return view('mypage.index', [
             'skills' => $skills,
             'subskills' => $subskills,
+            'current_skill' => $current_skill,
             'current_skill_id' => $current_skill_id,
         ]);
     }
