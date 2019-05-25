@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    const ADMIN_STATUS = [
+        0 => ['status' => '一般'],
+        1 => ['status' => '管理者'],
+    ];
+
+    public function getUserStatusAttribute()
+    {
+        //ユーザー権限
+        $status = $this->attribute['admin_flg'];
+
+        if(!isset(self::ADMIN_STATUS[$status])){
+            return '';
+        }
+
+        return self::ADMIN_STATUS[$status]['status'];
+    }
 }

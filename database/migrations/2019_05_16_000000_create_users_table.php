@@ -20,11 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('admin_flg')->default(0);
-            $table->integer('group_id')->unsigned()->default(1);
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 

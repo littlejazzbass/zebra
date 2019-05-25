@@ -19,7 +19,9 @@ class CreateGroupsTable extends Migration
             $table->string('name',30);
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('companys');
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companys');
         });
     }
 

@@ -15,12 +15,9 @@ class CreateSubskillsTable extends Migration
     {
         Schema::create('subskills', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('skill_id')->unsigned();
             $table->string('title',20);
             $table->integer('evaluation')->default(1);
             $table->timestamps();
-
-            $table->foreign('skill_id')->references('id')->on('skills');
         });
     }
 
