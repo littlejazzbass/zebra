@@ -19,6 +19,7 @@ class CreateGroupSubskillTable extends Migration
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('subskill_id');
             $table->timestamps();
+            $table->primary(['group_id','subskill_id']);
 
             //外部キー制約
             $table->foreign('group_id')

@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class GroupUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $group = DB::table('groups')->first();
-
-        DB::table('users')->insert([
-            'name' => 'test',
-            'email' => 'dummy@email.com',
-            'password' => bcrypt('test1234'),
+        $user = DB::table('users')->first();
+        DB::table('group_user')->insert([
+            'group_id' => $group->id,
+            'user_id' => $user->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

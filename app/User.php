@@ -38,6 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $table = 'users';
+
     const ADMIN_STATUS = [
         0 => ['status' => '一般'],
         1 => ['status' => '管理者'],
@@ -53,5 +55,10 @@ class User extends Authenticatable
         }
 
         return self::ADMIN_STATUS[$status]['status'];
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group','group_user');
     }
 }

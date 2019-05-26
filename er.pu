@@ -60,7 +60,6 @@ package "開発対象システム" as target_system {
     entity "社員" as users <<M,MASTER_MARK_COLOR>> {
         + ID [PK]
         --
-        # グループテーブル [FK]
         名前
         メールアドレス
         パスワード
@@ -73,7 +72,6 @@ package "開発対象システム" as target_system {
         + ID [PK]
         --
         # 社員テーブル [FK]
-        名前
         作成日
         更新日
         総合スコア
@@ -93,7 +91,6 @@ package "開発対象システム" as target_system {
     entity "サブスキル" as subskill <<M,MASTER_MARK_COLOR>> {
         + ID [PK]
         --
-        # スキルテーブル[FK]
         名前
         評価
         作成日
