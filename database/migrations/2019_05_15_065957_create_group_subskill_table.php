@@ -13,13 +13,12 @@ class CreateGroupSubskillTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_subskill', function (Blueprint $table) {
+        Schema::create('group_skill', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',20);
             $table->unsignedInteger('group_id');
-            $table->unsignedInteger('subskill_id');
+            $table->unsignedInteger('skill_id');
             $table->timestamps();
-            $table->primary(['group_id','subskill_id']);
 
             //外部キー制約
             $table->foreign('group_id')
@@ -41,6 +40,6 @@ class CreateGroupSubskillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_subskill');
+        Schema::dropIfExists('group_skill');
     }
 }

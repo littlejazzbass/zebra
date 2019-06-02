@@ -78,7 +78,7 @@ package "開発対象システム" as target_system {
         平均値(グループ毎)
     }
 
-    entity "グループサブスキルテーブル" as skill <<C,MASTER_MARK_COLOR>> MAIN_ENTITY_2 {
+    entity "グループスキルテーブル" as group_skill <<C,MASTER_MARK_COLOR>> MAIN_ENTITY_2 {
         + ID [PK]
         --
         # グループID[FK]
@@ -88,9 +88,19 @@ package "開発対象システム" as target_system {
         更新日
     }
 
+    entity "スキル" as skill <<C,MASTER_MARK_COLOR>> {
+        + ID [PK]
+        --
+        名前
+        作成日
+        更新日
+    }
+
+
     entity "サブスキル" as subskill <<M,MASTER_MARK_COLOR>> {
         + ID [PK]
         --
+        # スキルID[FK]
         名前
         評価
         作成日
@@ -99,15 +109,17 @@ package "開発対象システム" as target_system {
 
     /'リソース系'/
     company ||-ri-|{    group
-    group   ||-ri-|{    skill
+
     users   ||-do-|{    skilldetail
+    skill ||-ri-|{ subskill
 
     /'中間テーブル'/
     group_users }|-up-|| group
     group_users }|-ri-|| users
 
+    group_skill }|-ri-|| skill
+    group ||-ri-|{ group_skill
 
-    skill }|-ri-|| subskill
 }
 
 
