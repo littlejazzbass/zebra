@@ -75,7 +75,6 @@ package "開発対象システム" as target_system {
         作成日
         更新日
         総合スコア
-        平均値(グループ毎)
     }
 
     entity "グループスキルテーブル" as group_skill <<C,MASTER_MARK_COLOR>> MAIN_ENTITY_2 {

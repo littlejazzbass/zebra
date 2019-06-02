@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupSubskillTable extends Migration
+class CreateGroupSkillTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class CreateGroupSubskillTable extends Migration
     {
         Schema::create('group_skill', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title',20);
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('skill_id');
             $table->timestamps();
@@ -26,9 +25,9 @@ class CreateGroupSubskillTable extends Migration
                 ->on('groups')
                 ->onDelete('cascade');
 
-            $table->foreign('subskill_id')
+            $table->foreign('skill_id')
                 ->references('id')
-                ->on('subskills')
+                ->on('skills')
                 ->onDelete('cascade');
         });
     }
