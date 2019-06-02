@@ -15,8 +15,8 @@ class CreateGroupSkillTable extends Migration
     {
         Schema::create('group_skill', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('group_id');
-            $table->unsignedInteger('skill_id');
+            $table->integer('group_id')->unsigned();
+            $table->integer('skill_id')->unsigned();
             $table->timestamps();
 
             //外部キー制約

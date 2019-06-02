@@ -15,8 +15,7 @@ class CreateSkilldetailsTable extends Migration
     {
         Schema::create('skilldetails', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable(false);
-            $table->unsignedInteger('user_id')->nullable(false);
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->integer('total');
 
