@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Skill;
 
 class GroupSkillTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class GroupSkillTableSeeder extends Seeder
         $group4 = DB::table('groups')->find(4);
         $group5 = DB::table('groups')->find(5);
 
-        $skills = DB::table('skills')->all()->get();
+        $skills = Skill::all()->toArray();
 
         DB::table('group_skill')->insert([
             'group_id' => $group1->id,
@@ -124,6 +125,6 @@ class GroupSkillTableSeeder extends Seeder
             'skill_id' => $skills[10]->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ],);
+        ]);
     }
 }
