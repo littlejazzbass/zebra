@@ -16,6 +16,7 @@ class SkilldetailsTableSeeder extends Seeder
         $user = DB::table('users')->first();
         DB::table('skilldetails')->insert([
             'user_id' => $user->id,
+            'total' => 78,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
