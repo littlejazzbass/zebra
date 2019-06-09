@@ -29,155 +29,157 @@ class GroupUserTableSeeder extends Seeder
         $user7 = DB::table('users')->find(7);
         $user8 = DB::table('users')->find(8);
         $user9 = DB::table('users')->find(9);
-        $use10 = DB::table('users')->find(10);
-        $use11 = DB::table('users')->find(11);
+        $user10 = DB::table('users')->find(10);
+        $user11 = DB::table('users')->find(11);
 
-        $use12 = DB::table('users')->find(12);
-        $use13 = DB::table('users')->find(13);
-        $use14 = DB::table('users')->find(14);
-        $use15 = DB::table('users')->find(15);
-        $use16 = DB::table('users')->find(16);
+        $user12 = DB::table('users')->find(12);
+        $user13 = DB::table('users')->find(13);
+        $user14 = DB::table('users')->find(14);
+        $user15 = DB::table('users')->find(15);
+        $user16 = DB::table('users')->find(16);
 
-        $use17 = DB::table('users')->find(17);
-        $use18 = DB::table('users')->find(18);
-        $use19 = DB::table('users')->find(19);
+        $user17 = DB::table('users')->find(17);
+        $user18 = DB::table('users')->find(18);
+        $user19 = DB::table('users')->find(19);
 
-        $use20 = DB::table('users')->find(20);
-        $use21 = DB::table('users')->find(21);
+        $user20 = DB::table('users')->find(20);
+        $user21 = DB::table('users')->find(21);
 
         DB::table('group_user')->insert([
-            'group_id' => $group1->id,
-            'user_id' => $user1->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group1->id,
-            'user_id' => $user2->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group1->id,
-            'user_id' => $user3->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group1->id,
-            'user_id' => $user4->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group1->id,
-            'user_id' => $user5->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group1->id,
-            'user_id' => $user6->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],
+            [
+                'group_id' => $group1->id,
+                'user_id' => $user1->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group1->id,
+                'user_id' => $user2->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group1->id,
+                'user_id' => $user3->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group1->id,
+                'user_id' => $user4->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group1->id,
+                'user_id' => $user5->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group1->id,
+                'user_id' => $user6->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
-        [
-            'group_id' => $group2->id,
-            'user_id' => $user7->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group2->id,
-            'user_id' => $user8->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group2->id,
-            'user_id' => $user9->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group2->id,
-            'user_id' => $user10->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group2->id,
-            'user_id' => $user11->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],
+            [
+                'group_id' => $group2->id,
+                'user_id' => $user7->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group2->id,
+                'user_id' => $user8->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group2->id,
+                'user_id' => $user9->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group2->id,
+                'user_id' => $user10->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group2->id,
+                'user_id' => $user11->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
-        [
-            'group_id' => $group3->id,
-            'user_id' => $user12->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group3->id,
-            'user_id' => $use13->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group3->id,
-            'user_id' => $user14->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group3->id,
-            'user_id' => $user15->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group3->id,
-            'user_id' => $user16->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],
+            [
+                'group_id' => $group3->id,
+                'user_id' => $user12->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group3->id,
+                'user_id' => $user13->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group3->id,
+                'user_id' => $user14->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group3->id,
+                'user_id' => $user15->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group3->id,
+                'user_id' => $user16->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
-        [
-            'group_id' => $group4->id,
-            'user_id' => $user17->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group4->id,
-            'user_id' => $user18->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group4->id,
-            'user_id' => $user19->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],
+            [
+                'group_id' => $group4->id,
+                'user_id' => $user17->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group4->id,
+                'user_id' => $user18->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group4->id,
+                'user_id' => $user19->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
-        [
-            'group_id' => $group5->id,
-            'user_id' => $user20->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group5->id,
-            'user_id' => $user21->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group5->id,
-            'user_id' => $user2->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group5->id,
-            'user_id' => $user1->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group5->id,
-            'user_id' => $user7->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],[
-            'group_id' => $group5->id,
-            'user_id' => $user12->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ],);
+            [
+                'group_id' => $group5->id,
+                'user_id' => $user20->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group5->id,
+                'user_id' => $user21->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group5->id,
+                'user_id' => $user2->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group5->id,
+                'user_id' => $user1->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group5->id,
+                'user_id' => $user7->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'group_id' => $group5->id,
+                'user_id' => $user12->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
     }
 }
