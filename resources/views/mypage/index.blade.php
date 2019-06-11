@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">{{ $user->name }}</div>
+
+        <!-- ユーザー名 -->
+        <div class="col-sm-12 text-center">{{ $user->name }}さんのスキル情報</div>
+
+        <!-- スキルグラフ -->
         <div class="charts col-xs-12 col-sm-12 col-md-12">
             <div class="col-xs-12 col-sm-8 col-md-7">
                 <canvas id="myChart2"></canvas>
@@ -13,6 +17,7 @@
             </div>
         </div>
 
+        <!-- 所属グループ -->
         <div class="col-md-12">
             @foreach($groups as $group)
             <button type="button" onclick="{{ route('home') }}?group_id={{ $group->id }}" class="col-md-3 btn btn-default">
@@ -21,7 +26,7 @@
             @endforeach
         </div>
 
-
+        <!-- スキルセット -->
         <div class="col-xs-12 col-sm-12 col-md-4">
             <nav class="panel panel-default">
                 <div class="panel-heading">スキル</div>
@@ -36,6 +41,8 @@
                 </div>
             </nav>
         </div>
+
+        <!-- サブスキルセット -->
         <div class="col-xs-12 col-sm-12 col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">詳細</div>
@@ -67,6 +74,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 @endsection
