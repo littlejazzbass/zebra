@@ -11,8 +11,8 @@ class Group extends Model
     {
         return $this->belongsToMany('App\User','group_user');
     }
-    public function subskills()
+    public function skills()
     {
-        return $this->belongsToMany('App\Subskill','group_subskill');
+        return $this->belongsToMany('App\Skill','group_skill');
     }
 }

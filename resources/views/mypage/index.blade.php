@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col-sm-12">{{ $user->name }}</div>
         <div class="charts col-xs-12 col-sm-12 col-md-12">
             <div class="col-xs-12 col-sm-8 col-md-7">
                 <canvas id="myChart2"></canvas>
@@ -11,14 +12,24 @@
                 <canvas id="myChart"></canvas>
             </div>
         </div>
+
+        <div class="col-md-12">
+            @foreach($groups as $group)
+            <button type="button" onclick="{{ route('home') }}?group_id={{ $group->id }}" class="col-md-3 btn btn-default">
+                {{ $group->name }}
+            </button>
+            @endforeach
+        </div>
+
+
         <div class="col-xs-12 col-sm-12 col-md-4">
             <nav class="panel panel-default">
                 <div class="panel-heading">スキル</div>
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach($skills as $skill)
-                        <a href="{{ route('home')}}?skill_id={{ $skill->id }}" class="list-group-item  {{ $current_skill_id == $skill->id ? 'active' : '' }}">
-                            {{ $skill->title }}
+                        <a href="{{ route('home')}}?skill_id={{ $skill->id }}" class="list-group-item ">
+                            {{ $skill->name }}
                         </a>
                         @endforeach
                     </div>
@@ -32,7 +43,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>スキル名</th>
+                                <th>サブスキル名</th>
                                 <th>評価</th>
                                 <th>更新日</th>
                             </tr>
