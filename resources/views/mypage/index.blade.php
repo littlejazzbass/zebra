@@ -58,12 +58,12 @@
                         <tbody>
                             @foreach($subskills as $subskill)
                             <tr>
-                                <td>{{ $subskill->title }}</td>
+                                <td>{{ $subskill->name }}</td>
                                 <td>
                                     <span>
                                         @for($i = 0; $i < $subskill->evaluation; $i++)
                                             ★
-                                            @endfor
+                                        @endfor
                                     </span>
                                 </td>
                                 <td>{{ $subskill->formatted_updated_date }}</td>
@@ -108,7 +108,7 @@
                 @endforeach
             ],
             datasets: [{
-                label: '{{ $current_skill->title }}',
+                label: '{{ $current_skill->name }}',
                 backgroundColor: color(colorSet.green).alpha(0.5).rgbString(),
                 borderColor: colorSet.green,
                 pointBackgroundColor: colorSet.green,
@@ -128,7 +128,7 @@
                 display: true,
                 fontSize: 12,
                 fontColor: '#666',
-                text: '{{ $current_skill->title }}'
+                text: '{{ $current_skill->name }}'
             },
             scale: {
                 display: true,
