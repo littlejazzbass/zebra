@@ -20,7 +20,7 @@
         <!-- 所属グループ -->
         <div class="col-md-12">
             @foreach($groups as $group)
-            <button type="button" onclick="{{ route('home') }}?group_id={{ $group->id }}" class="col-md-3 btn btn-default">
+            <button type="button" onclick="{{ route('home') }}" class="col-md-3 btn btn-default">
                 {{ $group->name }}
             </button>
             @endforeach
@@ -33,7 +33,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach($skills as $skill)
-                        <a href="{{ route('home')}}?skill_id={{ $skill->id }}" class="list-group-item ">
+                        <a href="{{ route('home',['group' => $current_group->id, 'skill'=> $skill->id])}}" class="list-group-item ">
                             {{ $skill->name }}
                         </a>
                         @endforeach

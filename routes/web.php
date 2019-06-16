@@ -12,11 +12,11 @@
 */
 Auth::routes();
 
-Route::get('/',function(){
-    return view('welcome');
-});
 Route::middleware(['auth','general'])->group(function(){
-    Route::get('/mypage/skill/','HomeController@index')->name('home');
+    Route::get('/', function(){
+        return redirect()->route('home');
+    });
+    Route::get('/mypage/{group?}/{skill?}','HomeController@index')->name('home');
 });
 
 Route::middleware(['auth','admin'])->group(function(){

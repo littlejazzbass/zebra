@@ -10,25 +10,37 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    /**
+    * GET /mypage/skill/{group_id}/{skill_id}
+    */
+    public function index(Group $group, Skill $skill)
     {
-        $current_skill_id = $request->skill_id;
-        if (!isset($request->skill_id)) {
-            $current_skill_id = Auth::user()->groups()->get();
-        }
-        $current_group_id = $request->group_id;
-
+        //ログインユーザーを取得する
         $user = Auth::user();
+
+        //ログインユーザーに紐づくグループを取得する
         $groups = $user->groups()->get();
-        $skillsets = [];
-        foreach($groups as $group){
-            array_push($skillsets,$group->skills()->get());
+
+        //現在のスキルセットを取得する
+        $skills = $group->skills()->get();
+        if(isset($group)){
+            $skills = $groups->first()->skills()->get();
         }
 
-        $group_id = Group::all();
-        $current_skill = $skillsets[1]->first();
+        //現在のスキルを取得する
+        $current_skill = $skill;
+        if(isset($skill)){
+            $current_skill = $skills->first();
+        }
+
+        //サブスキルを取得する
         $subskills = $current_skill->subskills()->get();
-        $skills = $skillsets[0];
+
+        //現在のグループを取得する
+        $current_group = $group;
+
+        //現在のスキルに紐づくサブスキルを取得する
+        $subskills = $current_skill->subskills()->get();
 
         return view('mypage.index', [
             'user' => $user,
@@ -36,7 +48,7 @@ class HomeController extends Controller
             'skills' => $skills,
             'subskills' => $subskills,
             'current_skill' => $current_skill,
-            'current_skill_id' => $current_skill_id,
+            'current_group' => $group,
         ]);
     }
 }
