@@ -22,19 +22,23 @@ class HomeController extends Controller
         $groups = $user->groups()->get();
 
         //現在のスキルセットを取得する
-        $skills = $group->skills()->get();
-        if(isset($group)){
-            $skills = $groups->first()->skills()->get();
+        if(!isset($group)){
+            return redirect()
+                    ->route('home',
+                        [
+                            'group'=>$user->groups()->first()->id,
+                            'skill'=>$groups->first()->skills()->first()->id
+                        ]);
+        }else{
+            $skills = $group->skills()->get();
         }
 
         //現在のスキルを取得する
-        $current_skill = $skill;
         if(isset($skill)){
+            $current_skill = $skill;
+        }else{
             $current_skill = $skills->first();
         }
-
-        //サブスキルを取得する
-        $subskills = $current_skill->subskills()->get();
 
         //現在のグループを取得する
         $current_group = $group;

@@ -104,7 +104,7 @@
         data: {
             labels: [
                 @foreach($subskills as $subskill)
-                    '{{ $subskill->title }}',
+                    '{{ $subskill->name }}',
                 @endforeach
             ],
             datasets: [{
