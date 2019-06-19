@@ -12,6 +12,9 @@
 */
 Auth::routes();
 
+Route::get('/', function(){
+    return view('welcome');
+});
 Route::middleware(['auth','general'])->group(function(){
     Route::get('/', function(){
         return redirect()->route('home');

@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-    * GET /mypage/skill/{group_id}/{skill_id}
+    * GET /mypage/skill/{group}/{skill}
     */
-    public function index(Group $group, Skill $skill)
+    public function index(Group $group , Skill $skill)
     {
         //ログインユーザーを取得する
         $user = Auth::user();
@@ -22,16 +22,17 @@ class HomeController extends Controller
         $groups = $user->groups()->get();
 
         //現在のスキルセットを取得する
-        $skills = $group->skills()->get();
-        if(isset($group)){
-            $skills = $groups->first()->skills()->get();
+        if(is_null($group->id)){
+            return redirect()->route('home',[
+                'group' => $groups->first()->id,
+                'skill' => $groups->first()->skills()->first()->id,
+            ]);
+        }else{
+            $skills = $group->skills()->get();
         }
 
         //現在のスキルを取得する
         $current_skill = $skill;
-        if(isset($skill)){
-            $current_skill = $skills->first();
-        }
 
         //サブスキルを取得する
         $subskills = $current_skill->subskills()->get();

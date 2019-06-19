@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('styles')
+<link rel="stylesheet" href="/css/mypage/index.css">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -8,7 +12,7 @@
         <div class="col-sm-12 text-center">{{ $user->name }}さんのスキル情報</div>
 
         <!-- スキルグラフ -->
-        <div class="charts col-xs-12 col-sm-12 col-md-12">
+        <div class="charts col-xs-12 col-sm-12 col-md-12 skill-charts">
             <div class="col-xs-12 col-sm-8 col-md-7">
                 <canvas id="myChart2"></canvas>
             </div>
@@ -18,22 +22,29 @@
         </div>
 
         <!-- 所属グループ -->
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 groups">
             @foreach($groups as $group)
-            <button type="button" onclick="{{ route('home') }}" class="col-md-3 btn btn-default">
+            <a href="{{ route('home',[
+                    'group' => $group->id,
+                    'skill' => $group->skills()->first()->id,
+                ]) }}">
+                <button type="button"
+                class="col-md-3 btn btn-default {{ $current_group->id === $group->id ? 'active' : '' }}">
                 {{ $group->name }}
-            </button>
+                </button>
+            </a>
             @endforeach
         </div>
 
         <!-- スキルセット -->
-        <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="col-xs-12 col-sm-12 col-md-4 mt-5 skills">
             <nav class="panel panel-default">
                 <div class="panel-heading">スキル</div>
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach($skills as $skill)
-                        <a href="{{ route('home',['group' => $current_group->id, 'skill'=> $skill->id])}}" class="list-group-item ">
+                        <a href="{{ route('home',['group' => $current_group->id, 'skill'=> $skill->id])}}"
+                            class="list-group-item {{ $current_skill->id === $skill->id ? 'active' : '' }}">
                             {{ $skill->name }}
                         </a>
                         @endforeach
@@ -43,7 +54,7 @@
         </div>
 
         <!-- サブスキルセット -->
-        <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="col-xs-12 col-sm-12 col-md-8 mt-5 subskills">
             <div class="panel panel-default">
                 <div class="panel-heading">詳細</div>
                 <div class="panel-body">
@@ -104,7 +115,7 @@
         data: {
             labels: [
                 @foreach($subskills as $subskill)
-                    '{{ $subskill->title }}',
+                    '{{ $subskill->name }}',
                 @endforeach
             ],
             datasets: [{

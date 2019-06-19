@@ -21,8 +21,8 @@ class AdminController extends Controller
 
         return view('admin.index',[
             'user_group' => $user_group,
-            'users' = $users,
-            'company' = $company,
+            'users' => $users,
+            'company' => $company,
         ]);
     }
 }
