@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
-use App\Skill;
+use App\Models\Group;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -59,6 +59,6 @@ class User extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsToMany('App\Group','group_user');
+        return $this->belongsToMany('App\Models\Group','group_user');
     }
 }

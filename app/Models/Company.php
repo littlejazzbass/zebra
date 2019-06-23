@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,6 @@ class Company extends Model
 {
     public function groups()
     {
-        return $this->hasMany('App\Group');
+        return $this->hasMany('App\Models\Group');
     }
 }
