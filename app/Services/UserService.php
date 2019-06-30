@@ -3,6 +3,8 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Skill;
+
 
 class UserService extends Services
 {
@@ -27,5 +29,10 @@ class UserService extends Services
         ->first();
 
         return $user;
+    }
+
+    public function getSubskills(Skill $current_skill)
+    {
+        return $current_skill->subskills()->get();
     }
 }

@@ -7,9 +7,17 @@ use App\Models\Skill;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class HomeController extends Controller
 {
+    protected $user_service;
+
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     /**
     * GET /mypage/skill/{group}/{skill}
     */
@@ -33,15 +41,12 @@ class HomeController extends Controller
 
         //現在のスキルを取得する
         $current_skill = $skill;
-
+        
         //サブスキルを取得する
-        $subskills = $current_skill->subskills()->get();
+        $subskills = $this->user_service->getSubskills($current_skill);
 
         //現在のグループを取得する
         $current_group = $group;
-
-        //現在のスキルに紐づくサブスキルを取得する
-        $subskills = $current_skill->subskills()->get();
 
         return view('mypage.index', [
             'user' => $user,
