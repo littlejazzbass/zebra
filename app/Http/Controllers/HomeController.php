@@ -24,10 +24,10 @@ class HomeController extends Controller
     public function index(Group $group , Skill $skill)
     {
         //ログインユーザーを取得する
-        $user = Auth::user();
+        $user = $this->user_service->getUser();
 
         //ログインユーザーに紐づくグループを取得する
-        $groups = $user->groups()->get();
+        $groups = $this->user_service->getGroups($user);
 
         //現在のスキルセットを取得する
         if(is_null($group->id)){
@@ -41,7 +41,7 @@ class HomeController extends Controller
 
         //現在のスキルを取得する
         $current_skill = $skill;
-        
+
         //サブスキルを取得する
         $subskills = $this->user_service->getSubskills($current_skill);
 

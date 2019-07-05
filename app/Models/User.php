@@ -41,8 +41,8 @@ class User extends Authenticatable
     protected $table = 'users';
 
     const ADMIN_STATUS = [
-        0 => ['status' => '一般'],
-        1 => ['status' => '管理者'],
+        0 => '一般',
+        1 => '管理者',
     ];
 
     public function getUserStatusAttribute()
@@ -54,7 +54,7 @@ class User extends Authenticatable
             return '';
         }
 
-        return self::ADMIN_STATUS[$status]['status'];
+        return self::ADMIN_STATUS[$status];
     }
 
     public function groups()
