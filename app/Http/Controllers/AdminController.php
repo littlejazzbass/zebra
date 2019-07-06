@@ -37,4 +37,9 @@ class AdminController extends Controller
             'groups' => $groups,
         ]);
     }
+
+    public function detail()
+    {
+        echo "echo";
+    }
 }

@@ -1,3 +1,8 @@
+.container .row {
+  display: flex;
+  flex-flow: column;
+}
+
 .container .row .search-box {
   display: flex;
   align-items: center;
@@ -32,8 +37,20 @@
   color: #ffffff;
 }
 
+.container .row .table-box table tbody tr:hover a {
+  color: #ffffff;
+}
+
 .container .row .table-box table tbody tr td {
   vertical-align: middle !important;
+}
+
+.container .row .table-box table tbody tr td a {
+  color: #434a5a;
+}
+
+.container .row .table-box table tbody tr td a:hover {
+  color: #ffffff;
 }
 
 .container .row .table-box table .number {

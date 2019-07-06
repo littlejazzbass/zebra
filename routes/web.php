@@ -24,4 +24,5 @@ Route::middleware(['auth','general'])->group(function(){
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('admin/index', 'AdminController@index')->name('admin');
+    Route::get('admin/detail/{user?}/{group?}/{skill?}', 'AdminController@detail')->name('admin.detail');
 });

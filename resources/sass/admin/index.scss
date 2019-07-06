@@ -1,5 +1,7 @@
 .container{
     .row{
+        display: flex;
+        flex-flow: column;
         .search-box{
             display: flex;
             align-items: center;
@@ -27,9 +29,15 @@
                         &:hover{
                             background: rgba(75, 192, 192);
                             color: #ffffff;
+                            a{
+                                color: #ffffff;
+                            }
                         }
                         td{
                             vertical-align:middle!important;
+                            a{
+                                color: #434a5a;
+                            }
                         }
                     }
 

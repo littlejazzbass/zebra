@@ -7,13 +7,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="search-box col-xs-7 col-sm-3 col-md-6">
+        <div class="search-box col-xs-7 col-sm-6 col-md-6">
             <i class="fas fa-search"></i>
             <input class="searchbox form-control" type="text" placeholder="氏名で検索">
             <select class="depts-select-box form-control" name="depts">
                 <option value="all">すべての部署</option>
                 @foreach($groups as $group)
-                    <option value="{{$group->name}}">{{$group->name}}</option>
+                <option value="{{$group->name}}">{{$group->name}}</option>
                 @endforeach
             </select>
         </div>
@@ -32,15 +32,26 @@
                 <tbody>
                     @foreach($users as $user)
                     <tr>
+
                         <td class="number" scope="row">{{ $user->id }}</th>
-                        <td class="name" data-label="氏名">{{ $user->name }}</td>
+                        <td class="name" data-label="氏名">
+                            <a href="{{ route('admin.detail',[
+                                        'user' => $user->id,
+                                        'group' => $user->groups()->first()->id,
+                                        'skill' => $user->groups()->first()->skills()->first()->id,
+                                    ]) }}">
+                                    {{ $user->name }}
+                            </a>
+                        </td>
                         <td class="runk" data-label="種別">{{ $user->user_status }}</td>
                         <td class="dept" data-label="所属">
                             @foreach($user->groups()->get() as $group)
-                                {{ $group->name }}</br>
+                            {{ $group->name }}</br>
                             @endforeach
                         </td>
+
                     </tr>
+
                     @endforeach
                 </tbody>
             </table>
