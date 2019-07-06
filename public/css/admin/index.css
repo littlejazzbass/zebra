@@ -1,4 +1,54 @@
-.container table tbody td {
+.container .row .search-box {
+  display: flex;
+  align-items: center;
+}
+
+.container .row .search-box .searchbox {
+  margin-right: 1rem;
+}
+
+.container .row .search-box i {
+  padding-right: 1rem;
+}
+
+.container .row .table-box {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container .row .table-box table thead {
+  display: block;
+}
+
+.container .row .table-box table tbody {
+  display: block;
+  overflow-y: scroll;
+  height: 700px;
+}
+
+.container .row .table-box table tbody tr:hover {
+  background: #4bc0c0;
+  color: #ffffff;
+}
+
+.container .row .table-box table tbody tr td {
   vertical-align: middle !important;
+}
+
+.container .row .table-box table .number {
+  min-width: 100px;
+}
+
+.container .row .table-box table .name {
+  width: 400px;
+}
+
+.container .row .table-box table .runk {
+  min-width: 200px;
+}
+
+.container .row .table-box table .dept {
+  min-width: 300px;
 }
 

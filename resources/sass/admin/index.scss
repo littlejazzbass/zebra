@@ -1,11 +1,51 @@
 .container{
-    table{
-        thead{
+    .row{
+        .search-box{
+            display: flex;
+            align-items: center;
+            .searchbox{
+                margin-right: 1rem;
+            }
+            i{
+                padding-right: 1rem;
+            }
 
         }
-        tbody{
-            td{
-                vertical-align:middle!important;
+        .table-box{
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            table{
+                thead{
+                    display: block;
+                }
+                tbody{
+                    display: block;
+                    overflow-y: scroll;
+                    height: 700px;
+                    tr{
+                        &:hover{
+                            background: rgba(75, 192, 192);
+                            color: #ffffff;
+                        }
+                        td{
+                            vertical-align:middle!important;
+                        }
+                    }
+
+                }
+                .number{
+                    min-width: 100px;
+                }
+                .name{
+                    width: 400px;
+                }
+                .runk{
+                    min-width: 200px;
+                }
+                .dept{
+                    min-width: 300px;
+                }
             }
         }
     }

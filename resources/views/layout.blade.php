@@ -8,6 +8,7 @@
     <title>ZEBRA</title>
     @yield('styles')
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/da609af0ff.js"></script>
 </head>
 
 <body>
