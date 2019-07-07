@@ -21,9 +21,19 @@ class AdminUserService extends Services
     *  @param User ログインユーザーコレクション
     *  @return
     */
-    public function getGroups(User $user)
+    public function getAllGroups(User $user)
     {
         return $this->getCompany($user)->groups()->get();
+    }
+
+    /**
+    *  会社のグループをすべて取得
+    *  @param User ログインユーザーコレクション
+    *  @return
+    */
+    public function getGroups(User $user)
+    {
+        return $user->groups()->get();
     }
 
     /**
@@ -61,6 +71,26 @@ class AdminUserService extends Services
     public function getUser()
     {
         return Auth::user();
+    }
+
+    /**
+    *  グループに紐づくスキルを取得
+    *  @param int $id ユーザーid
+    *  @return スキルコレクション
+    */
+    public function getSkills($group)
+    {
+        return $group->skills()->get();
+    }
+
+    /**
+    *  スキルに紐づくサブスキルを取得
+    *  @param int $id ユーザーid
+    *  @return サブスキルコレクション
+    */
+    public function getSubskills($skill)
+    {
+        return $skill->subskills()->get();
     }
 
     /**

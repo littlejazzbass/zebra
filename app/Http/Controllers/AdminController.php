@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Skill;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,8 +39,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function detail()
+    public function detail(User $user,Group $group,Skill $skill)
     {
-        echo "echo";
+        $groups = $this->admin_user->getGroups($user);
+        $skills = $this->admin_user->getSkills($group);
+        $subskills = $this->admin_user->getSubskills($skill);
+        $current_group = $group;
+        $current_skill = $skill;
+
+        return view('admin.detail',[
+            'user' => $user,
+            'groups' => $groups,
+            'skills' => $skills,
+            'subskills' => $subskills,
+            'current_group' =>   $current_group,
+            'current_skill' => $current_skill,
+        ]);
     }
 }
