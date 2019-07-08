@@ -1,0 +1,29 @@
+.container{
+    .border{
+        margin-top: 3.5rem;
+        p{
+            color: #444;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            &:before,&:after{
+                content: "";
+                flex-grow: 1;
+                height: 1px;
+                background: #444;
+                display: block;
+            }
+            &:before{
+                margin-right: .4em;
+            }
+            &:after{
+                margin-right: .4em;
+            }
+        }
+    }
+    .groups{
+        button{
+            margin-right: 3rem;
+        }
+    }
+}

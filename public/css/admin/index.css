@@ -49,10 +49,6 @@
   color: #434a5a;
 }
 
-.container .row .table-box table tbody tr td a:hover {
-  color: #ffffff;
-}
-
 .container .row .table-box table .number {
   min-width: 100px;
 }

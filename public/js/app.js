@@ -49419,6 +49419,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/admin/detail.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/admin/detail.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/admin/index.scss":
 /*!*****************************************!*\
   !*** ./resources/sass/admin/index.scss ***!
@@ -49453,16 +49464,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!**********************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/mypage/index.scss ./resources/sass/admin/index.scss ***!
-  \**********************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/mypage/index.scss ./resources/sass/admin/index.scss ./resources/sass/admin/detail.scss ***!
+  \*********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/html/zebra/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /var/www/html/zebra/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /var/www/html/zebra/resources/sass/mypage/index.scss */"./resources/sass/mypage/index.scss");
-module.exports = __webpack_require__(/*! /var/www/html/zebra/resources/sass/admin/index.scss */"./resources/sass/admin/index.scss");
+__webpack_require__(/*! /var/www/html/zebra/resources/sass/admin/index.scss */"./resources/sass/admin/index.scss");
+module.exports = __webpack_require__(/*! /var/www/html/zebra/resources/sass/admin/detail.scss */"./resources/sass/admin/detail.scss");
 
 
 /***/ })

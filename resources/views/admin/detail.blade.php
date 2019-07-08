@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('styles')
-<link rel="stylesheet" href="/css/mypage/index.css">
+<link rel="stylesheet" href="/css/admin/detail.css">
 @endsection
 
 @section('content')
@@ -9,8 +9,11 @@
     <div class="row">
 
         <!-- ユーザー名 -->
-        <div class="col-sm-12 text-center">{{ $user->name }}さんのスキル情報</div>
+        <div class="col-sm-12 text-center">{{ $user->name }}さんの情報</div>
 
+        <div class="border col-md-12">
+            <p class="title-graph">評価グラフ</p>
+        </div>
         <!-- スキルグラフ -->
         <div class="charts col-xs-12 col-sm-12 col-md-12 skill-charts">
             <div class="col-xs-12 col-sm-8 col-md-7">
@@ -22,6 +25,9 @@
         </div>
 
         <!-- 所属グループ -->
+        <div class="border col-md-12">
+            <p class="title-depts">所属</p>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 groups">
             @foreach($groups as $group)
             <a href="{{ route('admin.detail',[
@@ -37,6 +43,9 @@
             @endforeach
         </div>
 
+        <div class="border col-md-12">
+            <p class="title-depts">評価項目</p>
+        </div>
         <!-- スキルセット -->
         <div class="col-xs-12 col-sm-12 col-md-4 mt-5 skills">
             <nav class="panel panel-default">
