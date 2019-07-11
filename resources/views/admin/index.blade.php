@@ -43,7 +43,7 @@
                                     {{ $user->name }}
                             </a>
                         </td>
-                        <td class="runk" data-label="種別">{{ $user->user_status }}</td>
+                        <td class="runk" data-label="種別">{{ $user->getNumber($user->admin_flg) }}</td>
                         <td class="dept" data-label="所属">
                             @foreach($user->groups()->get() as $group)
                             {{ $group->name }}</br>

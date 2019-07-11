@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class AdminUserService extends Services
 {
-    public function __construct()
-    {
+    private $userModel;
 
+    public function __construct(User $userModel)
+    {
+        $this->userModel = $userModel;
     }
+
     /** #01
     *  会社のグループをすべて取得
     *  @param User ログインユーザーコレクション
@@ -27,11 +30,11 @@ class AdminUserService extends Services
     }
 
     /**
-    *  会社のグループをすべて取得
+    *  ユーザーのグループを取得
     *  @param User ログインユーザーコレクション
     *  @return
     */
-    public function getGroups(User $user)
+    public function getUserGroups(User $user)
     {
         return $user->groups()->get();
     }
@@ -41,26 +44,9 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return ユーザーコレクション
     */
-    public function getUsers()
+    public function getCompanyUsers()
     {
-        $query = User::query()
-        ->select([
-            'users.id',
-            'users.name',
-            'users.admin_flg',
-        ])
-        ->from('users')
-        ->whereIn(
-            'id',function($subquery){
-                $subquery
-                ->select('group_user.user_id')
-                ->from('group_user')
-                ->whereIn('group_user.group_id',[1,2,3,4,5])
-                ->groupBy('group_user.user_id');
-            }
-        )->get();
-
-        return $query;
+        return $this->userModel->getCompanyUsers();
     }
 
     /**
@@ -68,7 +54,7 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return ユーザーコレクション
     */
-    public function getUser()
+    public function getLoginUser()
     {
         return Auth::user();
     }
@@ -78,7 +64,7 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return スキルコレクション
     */
-    public function getSkills($group)
+    public function getSkills(Group $group)
     {
         return $group->skills()->get();
     }
@@ -88,7 +74,7 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return サブスキルコレクション
     */
-    public function getSubskills($skill)
+    public function getSubskills(Skill $skill)
     {
         return $skill->subskills()->get();
     }

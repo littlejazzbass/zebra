@@ -21,17 +21,14 @@ class AdminController extends Controller
 
     public function index()
     {
-        //ログインユーザーのIDを取得
-        $user = $this->admin_user->getUser();
+        //ログインユーザーを取得
+        $user = $this->admin_user->getLoginUser();
 
         //ユーザー一覧を取得
-        $users = $this->admin_user->getUsers();
-
-        //ログインユーザーの会社IDから会社を取得
-        $company = $this->admin_user->getCompany($user);
+        $users = $this->admin_user->getCompanyUsers();
 
         //会社のグループを全件取得する
-        $groups = $this->admin_user->getGroups($user);
+        $groups = $this->admin_user->getUserGroups($user);
 
         return view('admin.index',[
             'users' => $users,
@@ -41,7 +38,7 @@ class AdminController extends Controller
 
     public function detail(User $user,Group $group,Skill $skill)
     {
-        $groups = $this->admin_user->getGroups($user);
+        $groups = $this->admin_user->getUserGroups($user);
         $skills = $this->admin_user->getSkills($group);
         $subskills = $this->admin_user->getSubskills($skill);
         $current_group = $group;

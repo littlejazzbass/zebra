@@ -45,20 +45,36 @@ class User extends Authenticatable
         1 => '管理者',
     ];
 
-    public function getUserStatusAttribute()
+    public function getNumber($int)
     {
-        //ユーザー権限
-        $status = $this->attribute['admin_flg'];
-
-        if(!isset(self::ADMIN_STATUS[$status])){
-            return '';
-        }
-
-        return self::ADMIN_STATUS[$status];
+        return self::ADMIN_STATUS[$int];
     }
 
     public function groups()
     {
         return $this->belongsToMany('App\Models\Group','group_user');
     }
+
+    public function getCompanyUsers()
+    {
+        $query = User::query()
+        ->select([
+            'users.id',
+            'users.name',
+            'users.admin_flg',
+        ])
+        ->from('users')
+        ->whereIn(
+            'id',function($subquery){
+                $subquery
+                ->select('group_user.user_id')
+                ->from('group_user')
+                ->whereIn('group_user.group_id',[1,2,3,4,5])
+                ->groupBy('group_user.user_id');
+            }
+        )->get();
+        return $query;
+    }
+
+
 }

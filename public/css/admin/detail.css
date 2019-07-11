@@ -1,32 +1,12 @@
-.container .border {
-  margin-top: 3.5rem;
-}
-
-.container .border p {
-  color: #444;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.container .border p:before,
-.container .border p:after {
-  content: "";
-  flex-grow: 1;
-  height: 1px;
-  background: #444;
-  display: block;
-}
-
-.container .border p:before {
-  margin-right: 0.4em;
-}
-
-.container .border p:after {
-  margin-right: 0.4em;
-}
-
 .container .groups button {
-  margin-right: 3rem;
+  margin-right: 3rem !important;
+}
+
+.container .skills {
+  margin-top: 3rem !important;
+}
+
+.container .subskills {
+  margin-top: 3rem !important;
 }
 
