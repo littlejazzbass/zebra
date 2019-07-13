@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use App\Services\AdminUserService;
 
 class User extends Authenticatable
 {
@@ -55,7 +56,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Group','group_user');
     }
 
-    public function getCompanyUsers()
+    public function getCompanyUsers($groupIdArray)
     {
         $query = User::query()
         ->select([
@@ -65,11 +66,11 @@ class User extends Authenticatable
         ])
         ->from('users')
         ->whereIn(
-            'id',function($subquery){
+            'id',function($subquery) use(&$groupIdArray){
                 $subquery
                 ->select('group_user.user_id')
                 ->from('group_user')
-                ->whereIn('group_user.group_id',[1,2,3,4,5])
+                ->whereIn('group_user.group_id',$groupIdArray)
                 ->groupBy('group_user.user_id');
             }
         )->get();

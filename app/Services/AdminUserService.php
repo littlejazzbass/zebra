@@ -24,7 +24,7 @@ class AdminUserService extends Services
     *  @param User ログインユーザーコレクション
     *  @return
     */
-    public function getAllGroups(User $user)
+    public function getCompanyGroups(User $user)
     {
         return $this->getCompany($user)->groups()->get();
     }
@@ -44,9 +44,14 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return ユーザーコレクション
     */
-    public function getCompanyUsers()
+    public function getCompanyUsers(User $user)
     {
-        return $this->userModel->getCompanyUsers();
+        $groupIdArray = [];
+        $groups = $this->getCompany($user)->groups()->get();
+        foreach($groups as $group){
+            array_push($groupIdArray,$group->id);
+        }
+        return $this->userModel->getCompanyUsers($groupIdArray);
     }
 
     /**

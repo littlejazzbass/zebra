@@ -25,10 +25,10 @@ class AdminController extends Controller
         $user = $this->admin_user->getLoginUser();
 
         //ユーザー一覧を取得
-        $users = $this->admin_user->getCompanyUsers();
+        $users = $this->admin_user->getCompanyUsers($user);
 
         //会社のグループを全件取得する
-        $groups = $this->admin_user->getUserGroups($user);
+        $groups = $this->admin_user->getCompanyGroups($user);
 
         return view('admin.index',[
             'users' => $users,
