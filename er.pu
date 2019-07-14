@@ -35,6 +35,7 @@ package "開発対象システム" as target_system {
         + ID [PK]
         --
         名前
+        削除フラグ
         作成日
         更新日
     }
@@ -43,6 +44,7 @@ package "開発対象システム" as target_system {
         + ID   [PK]
         --
         # 会社テーブル [FK]
+        削除フラグ
         名前
         作成日
         更新日
@@ -53,6 +55,9 @@ package "開発対象システム" as target_system {
         --
         # グループID[FK]
         # 社員ID[FK]
+
+
+
         作成日
         更新日
     }
@@ -64,18 +69,11 @@ package "開発対象システム" as target_system {
         メールアドレス
         パスワード
         管理者フラグ
+        削除フラグ
         作成日
         更新日
     }
 
-    entity "明細" as skilldetail <<E,MASTER_MARK_COLOR>> MAIN_ENTITY {
-        + ID [PK]
-        --
-        # 社員テーブル [FK]
-        作成日
-        更新日
-        総合スコア
-    }
 
     entity "グループスキルテーブル" as group_skill <<C,MASTER_MARK_COLOR>> MAIN_ENTITY_2 {
         + ID [PK]
@@ -101,16 +99,41 @@ package "開発対象システム" as target_system {
         --
         # スキルID[FK]
         名前
+        作成日
+        更新日
+    }
+
+    entity "実績テーブル" as evaluation <<c,MASTER_MARK_COLOR>> {
+        + ID [PK]
+        --
+        # サブスキルID[FK]
+        # 社員ID[FK]
         評価
         作成日
         更新日
     }
 
-    /'リソース系'/
+    entity "実績履歴テーブル" as eval_historys {
+        + ID [PK]
+        --
+        # サブスキルfテーブルID[FK]
+        # ユーザーテーブルID[FK]
+        評価
+        グループNo.
+        作成日
+        更新日
+    }
+
     company ||-ri-|{    group
 
-    users   ||-do-|{    skilldetail
-    skill ||-ri-|{ subskill
+
+    skill ||--right--|{ subskill
+
+    evaluation }|-ri-|| subskill
+    users ||-ri-|{ evaluation
+    users ||-do-|{ eval_historys
+    eval_historys }|-le-|| subskill
+
 
     /'中間テーブル'/
     group_users }|-up-|| group
