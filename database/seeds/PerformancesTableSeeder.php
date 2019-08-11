@@ -23,7 +23,7 @@ class PerformancesTableSeeder extends Seeder
                 DB::table('performances')->insert([
                     'user_id' => $users[$i]['id'],
                     'subskill_id' => $subskills[$j]['id'],
-                    'evaluation' => mt_rand(30,45),
+                    'evaluation' => mt_rand(1,5),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);

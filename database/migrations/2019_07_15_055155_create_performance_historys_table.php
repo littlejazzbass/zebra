@@ -18,8 +18,20 @@ class CreatePerformanceHistorysTable extends Migration
             $table->unsignedInteger('subskill_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('evaluation');
-            $table->unsignedInteger('group_number');
+            $table->unsignedInteger('group_number'); //例：201906だったら6月など
             $table->timestamps();
+
+            $table->foreign('subskill_id')
+                ->references('id')
+                ->on('subskills')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            
         });
     }
 
