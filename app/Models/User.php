@@ -63,7 +63,7 @@ class User extends Authenticatable
 
     public function performanceHistorys()
     {
-        return $this->hasMany('app\Models\PerformanceHistory');
+        return $this->hasMany('App\Models\PerformanceHistory');
     }
 
     public function getCompanyUsers($groupIdArray)

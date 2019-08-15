@@ -1,12 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\User;
-use App\Models\Performance;
 use Illuminate\Database\Eloquent\Model;
 
-class Performances extends Model
+class Performance extends Model
 {
-    protected $table = 'performances'; 
+    protected $table = 'performances';
 }

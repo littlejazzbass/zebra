@@ -74,6 +74,17 @@ class AdminUserService extends Services
     }
 
     /**
+     * Undocumented function
+     *
+     * @param User $user
+     * @return void
+     */
+    public function getPerformances(User $user)
+    {
+        return $user->performances()->get();
+    }
+
+    /**
     *  スキルに紐づくサブスキルを取得
     *  @param int $id ユーザーid
     *  @return サブスキルコレクション

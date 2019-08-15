@@ -41,6 +41,7 @@ class AdminController extends Controller
         $groups = $this->admin_user->getUserGroups($user);
         $skills = $this->admin_user->getSkills($group);
         $subskills = $this->admin_user->getSubskills($skill);
+        $performances = $this->admin_user->getPerformances($user);
         $current_group = $group;
         $current_skill = $skill;
 
@@ -49,6 +50,7 @@ class AdminController extends Controller
             'groups' => $groups,
             'skills' => $skills,
             'subskills' => $subskills,
+            'performances' => $performances,
             'current_group' =>   $current_group,
             'current_skill' => $current_skill,
         ]);
