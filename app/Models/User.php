@@ -56,6 +56,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Group','group_user');
     }
 
+    public function performances()
+    {
+        return $this->hasMany('App\Models\Performance');
+    }
+
+    public function performanceHistorys()
+    {
+        return $this->hasMany('app\Models\PerformanceHistory');
+    }
+
     public function getCompanyUsers($groupIdArray)
     {
         $query = User::query()

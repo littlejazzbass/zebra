@@ -11,4 +11,10 @@ class Subskill extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('Y/m/d');
     }
+
+
+    public function performances()
+    {
+        $this->hasMany('App\Models\Performance');
+    }
 }

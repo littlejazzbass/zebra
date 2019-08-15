@@ -9,7 +9,6 @@ use App\MOdels\Company;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class AdminUserService extends Services
 {
     private $userModel;
@@ -48,8 +47,8 @@ class AdminUserService extends Services
     {
         $groupIdArray = [];
         $groups = $this->getCompany($user)->groups()->get();
-        foreach($groups as $group){
-            array_push($groupIdArray,$group->id);
+        foreach ($groups as $group) {
+            array_push($groupIdArray, $group->id);
         }
         return $this->userModel->getCompanyUsers($groupIdArray);
     }
