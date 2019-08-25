@@ -2,20 +2,23 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\User;;
 use App\Models\Skill;
-use App\MOdels\Group;
-use App\MOdels\Company;
+use App\Models\Subskill;
+use App\Models\Group;
+use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminUserService extends Services
 {
     private $userModel;
+    private $subskillModel;
 
-    public function __construct(User $userModel)
+    public function __construct(User $userModel,Subskill $subskillModel)
     {
         $this->userModel = $userModel;
+        $this->subskillModel = $subskillModel;
     }
 
     /** #01
@@ -89,9 +92,9 @@ class AdminUserService extends Services
     *  @param int $id ユーザーid
     *  @return サブスキルコレクション
     */
-    public function getSubskills(Skill $skill)
+    public function getSubskills(User $user, Skill $skill)
     {
-        return $skill->subskills()->get();
+        return $this->subskillModel->getSubskills($user, $skill);
     }
 
     /**

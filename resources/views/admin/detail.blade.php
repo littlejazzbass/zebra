@@ -74,7 +74,7 @@
                         <tbody>
                             @foreach($subskills as $subskill)
                             <tr>
-                                <td>{{ $subskill->name }}</td>
+                                <td>{{ $subskill->subskill_name }}</td>
                                 <td>
                                     <span>
                                         @for($i = 0; $i < $subskill->evaluation; $i++)

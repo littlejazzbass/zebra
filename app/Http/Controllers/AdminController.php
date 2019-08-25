@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Skill;
+use App\Models\Subskill;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,22 +31,21 @@ class AdminController extends Controller
         //会社のグループを全件取得する
         $groups = $this->admin_user->getCompanyGroups($user);
 
-        return view('admin.index',[
+        return view('admin.index', [
             'users' => $users,
             'groups' => $groups,
         ]);
     }
 
-    public function detail(User $user,Group $group,Skill $skill)
+    public function detail(User $user, Group $group, Skill $skill)
     {
         $groups = $this->admin_user->getUserGroups($user);
         $skills = $this->admin_user->getSkills($group);
-        $subskills = $this->admin_user->getSubskills($skill);
+        $subskills = $this->admin_user->getSubskills($user, $skill);
         $performances = $this->admin_user->getPerformances($user);
         $current_group = $group;
         $current_skill = $skill;
-
-        return view('admin.detail',[
+        return view('admin.detail', [
             'user' => $user,
             'groups' => $groups,
             'skills' => $skills,
